@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <base th:href="@{/}" href="" />
+    <title>Json2Bean</title>
+    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.css}" href="../static/lib/semantic/semantic.css" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../static/css/custom.css" />
+    <script th:src="@{/lib/jquery-1.11.2.js}" src="../static/lib/jquery-1.11.2.js"></script>
+    <script th:src="@{/lib/jquery.tablesort.js}" src="../static/lib/jquery.tablesort.js"></script>
+    <script th:src="@{/lib/jquery.serialize-object.js}" src="../static/lib/jquery.serialize-object.js"></script>
+    <script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
+    <script th:src="@{/lib/jquery.notification.js}" src="../static/lib/jquery.notification.js"></script>
+    <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
+</head>
+
+<body>
+    <div th:replace="index :: sidebar"></div>
+    <div th:replace="index :: menu"></div>
+    <div class="pusher">
+        <div class="container">
+            <div class="ui basic segment">
+                <h3 class="ui top attached header">Json2Bean page</h3>
+                <div class="ui bottom attached segment">
+                    <form class="ui form">
+                        <div class="inline field">
+                            <div class="ui toggle checkbox" id="chkCmmt">
+                                <input type="checkbox" name="cmmt" checked>
+                                <label>Add json value as comment</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Json:</label>
+                            <textarea id="txtInput" th:text="${json}"></textarea>
+                        </div>
+                    </form>
+                    <div class="ui segment">
+                        <div class="ui button" id="btnReplace">Convert</div>
+                    </div>
+                    <form class="ui form">
+                        <div class="field">
+                            <label>Log:</label>
+                            <textarea id="txtOutput"></textarea>
+                        </div>
+                    </form>
+                    <div class="ui segment">
+                        <span><b>下载转换源码:</b>&nbsp;&nbsp;&nbsp;&nbsp;</span><a target="_blank" id="dwnZip" href="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    jQuery(document).ready(function($) {
+
+        $('#btnReplace').click(function(event) {
+            $.post('json2bean/convert', {
+                cmmt: $('#chkCmmt').checkbox('is checked'),
+                json: $('#txtInput').val()
+            }, function(data, textStatus, xhr) {
+                if (data.success) {
+                    $('#txtOutput').val(data.data.logs);
+                    $('#dwnZip').attr('href', data.data.zipUrl).text(data.data.zipUrl);
+                    $.ntf.info('转换成功!');
+                } else {
+                    $('#txtOutput').val('');
+                    $.ntf.error(data.data);
+                }
+            });
+        });
+
+    });
+    </script>
+</body>
+
+</html>

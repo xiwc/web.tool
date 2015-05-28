@@ -1,0 +1,277 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<base th:href="@{/}" href="" />
+<title>Test</title>
+<link rel="stylesheet" th:href="@{/lib/semantic/semantic.css}" href="../static/lib/semantic/semantic.css" />
+<link rel="stylesheet" th:href="@{/lib/dropzone/dropzone.css}" href="../static/lib/dropzone/dropzone.css" />
+<link rel="stylesheet" th:href="@{/lib/dropzone/basic.css}" href="../static/lib/dropzone/basic.css" />
+<link rel="stylesheet" th:href="@{/lib/toastr/toastr.css}" href="../static/lib/toastr/toastr.css" />
+<link rel="stylesheet" th:href="@{/lib/fancybox/jquery.fancybox.css}" href="../static/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" th:href="@{/lib/fancybox/helpers/jquery.fancybox-buttons.css}" href="../static/lib/fancybox/helpers/jquery.fancybox-buttons.css" />
+<link rel="stylesheet" th:href="@{/lib/fancybox/helpers/jquery.fancybox-thumbs.css}" href="../static/lib/fancybox/helpers/jquery.fancybox-thumbs.css" />
+<link rel="stylesheet" th:href="@{/lib/wangeditor/css/wangEditor-1.3.css}" href="../static/lib/wangeditor/css/wangEditor-1.3.css" />
+<link rel="stylesheet" th:href="@{/lib/awesome/css/font-awesome.css}" href="../static/lib/awesome/css/font-awesome.css" />
+<link rel="stylesheet" th:href="@{/lib/wysiwyg/wysiwyg-editor.css}" href="../static/lib/wysiwyg/wysiwyg-editor.css" />
+<link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.css}" href="../static/lib/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" th:href="@{/lib/bootstrap-markdown/css/bootstrap-markdown.min.css}" href="../static/lib/bootstrap-markdown/css/bootstrap-markdown.min.css" />
+<link rel="stylesheet" th:href="@{/css/test.css}" href="../static/css/test.css" />
+<script th:src="@{/lib/jquery-1.11.2.js}" src="../static/lib/jquery-1.11.2.js"></script>
+<script th:src="@{/lib/jquery.tablesort.js}" src="../static/lib/jquery.tablesort.js"></script>
+<script th:src="@{/lib/jquery.serialize-object.js}" src="../static/lib/jquery.serialize-object.js"></script>
+<script th:src="@{/lib/jquery.html5uploader.js}" src="../static/lib/jquery.html5uploader.js"></script>
+<script th:src="@{/lib/dropzone/dropzone.js}" src="../static/lib/dropzone/dropzone.js"></script>
+<script th:src="@{/lib/toastr/toastr.js}" src="../static/lib/toastr/toastr.js"></script>
+<script th:src="@{/lib/fancybox/jquery.fancybox.js}" src="../static/lib/fancybox/jquery.fancybox.js"></script>
+<script th:src="@{/lib/fancybox/helpers/jquery.fancybox-buttons.js}" src="../static/lib/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+<script th:src="@{/lib/fancybox/helpers/jquery.fancybox-thumbs.js}" src="../static/lib/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+<script th:src="@{/lib/fancybox/helpers/jquery.fancybox-media.js}" src="../static/lib/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script th:src="@{/lib/wangeditor/js/wangEditor-1.3.js}" src="../static/lib/wangeditor/js/wangEditor-1.3.js"></script>
+<script th:src="@{/lib/wysiwyg/wysiwyg-editor.min.js}" src="../static/lib/wysiwyg/wysiwyg-editor.min.js"></script>
+<script th:src="@{/lib/jquery.iframe-transport.js}" src="../static/lib/jquery.iframe-transport.js"></script>
+<script th:src="@{/lib/ckeditor/ckeditor.js}" src="../static/lib/ckeditor/ckeditor.js"></script>
+<script th:src="@{/lib/ckeditor/adapters/jquery.js}" src="../static/lib/ckeditor/adapters/jquery.js"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.js}" src="../static/lib/bootstrap/js/bootstrap.js"></script>
+<script th:src="@{/lib/bootstrap-markdown/js/bootstrap-markdown.js}" src="../static/lib/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script th:src="@{/lib/bootstrap-markdown/locale/bootstrap-markdown.zh.js}" src="../static/lib/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
+<script th:src="@{/lib/markdown-js/lib/markdown.js}" src="../static/lib/markdown-js/lib/markdown.js"></script>
+<script th:src="@{/lib/jquery.hotkeys.js}" src="../static/lib/jquery.hotkeys.js"></script>
+<script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
+<script th:src="@{/js/test.js}" src="../static/js/test.js"></script>
+</head>
+<body>
+
+	<div class="ui segment">
+		<div class="ui toggle checkbox ts-flg">
+			<input type="checkbox" name="flg" /> <label>Flag</label>
+		</div>
+		<button class="ui button ts-search">Search</button>
+		<button class="ui button ts-list-all">List All</button>
+		<button class="ui button ts-clear-log">Clear Log</button>
+		<button class="ui button ts-show-notification">Show Notification</button>
+	</div>
+
+	<div class="ui divider"></div>
+
+	<div class="ui styled fluid accordion">
+		<div class="title">
+			<i class="dropdown icon"></i> Console Log Message
+		</div>
+		<div class="content">
+			<div class="ui message ts-message">
+				<ul class="list">
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui styled fluid accordion">
+		<div class="active title">
+			<i class="dropdown icon"></i> Bootstrap-markdownd
+		</div>
+		<div class="active content">
+			<form>
+			    <input name="title" type="text" placeholder="Title?" />
+			    <textarea id="ts-textarea-markdown" name="content" rows="10"></textarea>
+			    <label class="checkbox">
+			      <input name="publish" type="checkbox"> Publish
+			    </label>
+			    <hr/>
+			    <button type="submit" class="btn">Submit</button>
+		    </form> 
+		</div>
+		<div class="active title">
+			<i class="dropdown icon"></i> CKEditor
+		</div>
+		<div class="active content">
+			<textarea id="ts-textarea-ckeditor" style="width: 100%; height: 300px;"></textarea>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Wysiwyg Editor
+		</div>
+		<div class="content">
+			<textarea id="ts-textarea-wysiwyg" style="width: 100%; height: 300px;"></textarea>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Wang Editor
+		</div>
+		<div class="content">
+			<textarea id="ts-textarea-wang" style="width: 100%; height: 300px;"></textarea>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> FancyBox Slide Show
+		</div>
+		<div class="content">
+			<h3>Simple image gallery</h3>
+			<p>
+				<a class="fancybox" href="img/img01_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="img/img01.jpg" alt="" /></a>
+				<a class="fancybox" href="img/img02_b.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="img/img02.jpg" alt="" /></a>
+				<a class="fancybox" href="img/img03_b.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="img/img03.jpg" alt="" /></a>
+				<a class="fancybox" href="img/img04_b.jpg" data-fancybox-group="gallery" title="Sed vel sapien vel sem uno"><img src="img/img04.jpg" alt="" /></a>
+			</p>
+			<h3>Button helper</h3>
+			<p>
+				<a class="fancybox-buttons" href="img/img01_b.jpg" data-fancybox-group="button" title="Lorem ipsum dolor sit amet"><img src="img/img01.jpg" alt="" /></a>
+				<a class="fancybox-buttons" href="img/img02_b.jpg" data-fancybox-group="button" title="Etiam quis mi eu elit temp"><img src="img/img02.jpg" alt="" /></a>
+				<a class="fancybox-buttons" href="img/img03_b.jpg" data-fancybox-group="button" title="Cras neque mi, semper leon"><img src="img/img03.jpg" alt="" /></a>
+				<a class="fancybox-buttons" href="img/img04_b.jpg" data-fancybox-group="button" title="Sed vel sapien vel sem uno"><img src="img/img04.jpg" alt="" /></a>
+			</p>
+			<h3>Thumbnail helper</h3>
+			<p>
+				<a class="fancybox-thumbs" href="img/img01_b.jpg" data-fancybox-group="thumb" title="Lorem ipsum dolor sit amet"><img src="img/img01.jpg" alt="" /></a>
+				<a class="fancybox-thumbs" href="img/img02_b.jpg" data-fancybox-group="thumb" title="Etiam quis mi eu elit temp"><img src="img/img02.jpg" alt="" /></a>
+				<a class="fancybox-thumbs" href="img/img03_b.jpg" data-fancybox-group="thumb" title="Cras neque mi, semper leon"><img src="img/img03.jpg" alt="" /></a>
+				<a class="fancybox-thumbs" href="img/img04_b.jpg" data-fancybox-group="thumb" title="Sed vel sapien vel sem uno"><img src="img/img04.jpg" alt="" /></a>
+			</p>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Context Information
+		</div>
+		<div class="content">
+			<p th:text="${#ctx}" />
+			<p th:text="${#locale}" />
+			<p th:text="${#httpServletRequest.contextPath}" />
+			<p th:text="${#httpSession}" />
+			<p th:text="${@jsonParser.parse(#ctx)}" />
+			<p th:text="${T(org.xiwc.semantic.util.JsonUtil).toJson(#locale)}" />
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Form Testing
+		</div>
+		<div class="content">
+			<div class="ui segment">
+				<form action="#" th:action="@{/page/submit}" th:object="${test}" method="post">
+					<div class="ui warning form segment ts-form">
+						<div class="ui warning message">
+							<div class="header">Could you check something!</div>
+							<ul class="list">
+								<li>You forgot your <b>first name</b></li>
+								<li>And also your <b>last name</b></li>
+							</ul>
+						</div>
+						<div class="two fields">
+							<div class="field">
+								<label>First Name</label> <input th:field="*{firstName}" placeholder="First Name" type="text">
+							</div>
+							<div class="field">
+								<label>Last Name</label> <input th:field="*{lastName}" placeholder="Last Name" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<label>Age</label> <input th:field="*{age}" placeholder="Age" type="text">
+						</div>
+						<div class="grouped inline fields">
+							<div class="field">
+								<label>Gender</label>
+							</div>
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input th:field="*{sex}" th:value="'1'" type="radio"> <label>男</label>
+								</div>
+							</div>
+							<div class="field">
+								<div class="ui radio checkbox">
+									<input th:field="*{sex}" th:value="'2'" type="radio"> <label>女</label>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label>Username</label> <input th:field="*{userName}" placeholder="Username" type="text">
+						</div>
+						<div class="field">
+							<label>Password</label> <input th:field="*{password}" placeholder="Password" type="password">
+						</div>
+						<div class="inline field">
+							<div class="ui checkbox">
+								<input type="checkbox"> <label>I agree to the Terms and Conditions</label>
+							</div>
+						</div>
+						<div class="ui submit button ts-submit">Submit</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Html5 File Uploader
+		</div>
+		<div class="content">
+			<div class="ui segment">
+				<div class="ui segment ts-upload" id="dropbox"
+					style="height: 200px; max-width: 260px; margin: auto; border-style: dashed;">
+
+					<div class="ui dimmer">
+						<div class="ui text loader">Uploading...</div>
+					</div>
+					<input style="display: none;" id="multiple" name="multiple" type="file" multiple>
+					<h2 class="ui center aligned icon header">
+						<i class="file outline icon"></i> 拖拽区域
+					</h2>
+				</div>
+			</div>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Dropzone File Uploader
+		</div>
+		<div class="content">
+			<div class="ui segment">
+				<div id="dropzone">
+					<form action="page/upload" class="dropzone" id="my-dropzone">
+						<div class="dz-message">Drop files here or click to upload.</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="title">
+			<i class="dropdown icon"></i> Table Sort
+		</div>
+		<div class="content">
+			<div class="ui segment">
+				<table class="ui celled striped sortable table ts-table">
+					<thead>
+						<tr>
+							<th th:text="#{test.id}">ID</th>
+							<th th:text="#{test.first.last.name}">First Name/Last Name</th>
+							<th th:text="#{test.user.name}">User Name</th>
+							<th th:text="#{test.password}">Password</th>
+							<th th:text="#{test.age}">Age</th>
+							<th th:text="#{test.sex}">Sex</th>
+						</tr>
+					</thead>
+					<tbody th:remove="all-but-first">
+						<tr th:each="test : ${tests}" th:unless="${#lists.isEmpty(tests)}">
+							<td th:text="${test.id}" class="collapsing">1</td>
+							<td th:text="${test.firstName + ' ' + test.lastName}">zhang san</td>
+							<td th:text="${test.userName}">zhangsan</td>
+							<td th:text="${test.password}">zhangsan</td>
+							<td th:text="${test.age}" class="right aligned collapsing">30.0</td>
+							<td th:text="${test.sex} ? #{test.sex.male} : #{test.sex.female}" class="collapsing">Male</td>
+						</tr>
+						<tr>
+							<td class="collapsing">2</td>
+							<td>li si</td>
+							<td>lisi</td>
+							<td>lisi</td>
+							<td class="right aligned collapsing">28.0</td>
+							<td class="collapsing">Female</td>
+						</tr>
+						<tr>
+							<td class="collapsing">3</td>
+							<td>wang wu</td>
+							<td>wangwu</td>
+							<td>wangwu</td>
+							<td class="right aligned collapsing">34.0</td>
+							<td class="collapsing">Male</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="ui divider"></div>
+
+</body>
+</html>
