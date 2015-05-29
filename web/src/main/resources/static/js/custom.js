@@ -1,20 +1,26 @@
 jQuery(document).ready(function($) {
 
-    $('.ui.sidebar').sidebar({}).sidebar('attach events', '.xwc-menu');
+    var converter = new showdown.Converter();
+
+    $('.ui.sidebar').sidebar().sidebar('attach events', '.xwc-menu');
     $('.ui.checkbox').checkbox();
-    $('.ui.accordion.i18n').accordion({
-        onOpen: function() {
-            $.get('md/i18n.md', function(data) {
-                $('.markdown-body').html(markdown.toHTML(data));
-            });
-        }
+    $('.ui.accordion').accordion();
+    $('.popup').popup({
+        setFluidWidth: false,
+        position: 'bottom right',
+        inline: true
     });
-    $('.ui.accordion.json2bean').accordion({
-        onOpen: function() {
-            $.get('md/json2bean.md', function(data) {
-                $('.markdown-body').html(markdown.toHTML(data));
-            });
-        }
+
+    //load markdown file inner to html
+    $('.markdown-file').each(function(index, el) {
+        $.get($(el).attr('href'), function(data) {
+            $(el).replaceWith($('<div class="markdown-body"></div>').html(converter.makeHtml(data)));
+        });
+    });
+
+    // convert inner markdown text to html and replace it.
+    $('.markdown-text').each(function(index, el) {
+        $(el).replaceWith($('<div class="markdown-body"></div>').html(converter.makeHtml($(el).find('pre').text())));
     });
 
 });

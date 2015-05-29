@@ -16,7 +16,7 @@
     <script th:src="@{/lib/jquery.serialize-object.js}" src="../static/lib/jquery.serialize-object.js"></script>
     <script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
     <script th:src="@{/lib/jquery.notification.js}" src="../static/lib/jquery.notification.js"></script>
-    <script th:src="@{/lib/markdown.js}" src="../static/lib/markdown.js"></script>
+    <script th:src="@{/lib/showdown.min.js}" src="../static/lib/showdown.min.js"></script>
     <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
 </head>
 
@@ -29,11 +29,11 @@
                 <div class="ui top attached segment">
                     <div class="ui accordion json2bean">
                         <div class="title">
-                            <i class="dropdown icon"></i> <b>Json2Bean page</b>
+                            <i class="dropdown icon"></i> <b>Json2Bean Guide</b>
                         </div>
                         <div class="content">
                             <p>
-                                <div class="markdown-body"></div>
+                                <a class="markdown-file" th:href="@{/md/json2bean.md}" href="md/json2bean.md"></a>
                             </p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         </div>
                     </form>
                     <div class="ui segment">
-                        <span><b>下载转换源码:</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><b>转换源码下载链接:</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <a target="_blank" id="dwnZip" href="#"></a>
                     </div>
                 </div>

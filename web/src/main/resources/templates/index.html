@@ -9,11 +9,13 @@
     <base th:href="@{/}" href="" />
     <title>Home</title>
     <link rel="stylesheet" th:href="@{/lib/semantic/semantic.css}" href="../static/lib/semantic/semantic.css" />
+    <link rel="stylesheet" th:href="@{/css/md-github.css}" href="../static/css/md.css" />
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../static/css/custom.css" />
     <script th:src="@{/lib/jquery-1.11.2.js}" src="../static/lib/jquery-1.11.2.js"></script>
     <script th:src="@{/lib/jquery.tablesort.js}" src="../static/lib/jquery.tablesort.js"></script>
     <script th:src="@{/lib/jquery.serialize-object.js}" src="../static/lib/jquery.serialize-object.js"></script>
     <script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
+    <script th:src="@{/lib/showdown.min.js}" src="../static/lib/showdown.min.js"></script>
     <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
 </head>
 
@@ -37,17 +39,28 @@
         <a class="item" th:href="@{/page/i18n}" href="i18n.html">I18N</a>
         <a class="item" th:href="@{/page/json2bean}" href="json2bean.html">Json2Bean</a>
         <div class="right menu">
+            <a class="popup icon item" data-variation="inverted" data-content="Mail to xi.weicheng@emc.com" href="mailto:xi.weicheng@emc.com">
+                <i class="mail icon"></i>
+            </a>
         </div>
     </div>
     <div class="pusher">
         <div class="container">
             <div class="ui basic segment">
-                <h3 class="ui top attached header">Home page</h3>
+                <h3 class="ui top attached header">Brief Introduction</h3>
                 <div class="ui attached segment">
-                    <p><b>I18N: </b>该工具可以识别Flex UI界面源码中需要国际化的属性文本，例如`text` `label` `title`等等。自动识别出对应的国际化资源属性，生成国际化替换函数替换的界面源码。</p>
+                    <p>
+                        <div class="markdown-text">
+                            <pre>**I18N**: 该工具可以识别Flex UI界面源码中需要国际化的属性文本，例如`text` `label` `title`等等。自动识别出对应的国际化资源属性，生成国际化替换函数替换的界面源码。</pre>
+                        </div>
+                    </p>
                 </div>
                 <div class="ui bottom attached segment">
-                    <p><b>Json2Bean: </b>该工具可以根据请求返回的`json`响应结果，生成对应层次结构的`java bean`类。</p>
+                    <p>
+                        <div class="markdown-text">
+                            <pre>**Json2Bean**: 该工具可以根据请求返回的`json`响应结果，生成对应层次结构的`java bean`类。</pre>
+                        </div>
+                    </p>
                 </div>
             </div>
         </div>

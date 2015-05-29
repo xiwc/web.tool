@@ -16,7 +16,7 @@
     <script th:src="@{/lib/jquery.serialize-object.js}" src="../static/lib/jquery.serialize-object.js"></script>
     <script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
     <script th:src="@{/lib/jquery.notification.js}" src="../static/lib/jquery.notification.js"></script>
-    <script th:src="@{/lib/markdown.js}" src="../static/lib/markdown.js"></script>
+    <script th:src="@{/lib/showdown.min.js}" src="../static/lib/showdown.min.js"></script>
     <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
 </head>
 
@@ -29,10 +29,12 @@
                 <div class="ui top attached segment">
                     <div class="ui accordion i18n">
                         <div class="title">
-                            <i class="dropdown icon"></i> <b>I18n page</b>
+                            <i class="dropdown icon"></i> <b>I18n Guide</b>
                         </div>
                         <div class="content">
-                            <p><div class="markdown-body"></div></p>
+                            <p>
+                                <a class="markdown-file" th:href="@{/md/i18n.md}" href="md/i18n.md"></a>
+                            </p>
                         </div>
                     </div>
                 </div>
