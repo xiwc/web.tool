@@ -23,4 +23,14 @@ jQuery(document).ready(function($) {
         $(el).replaceWith($('<div class="markdown-body"></div>').html(converter.makeHtml($(el).find('pre').text())));
     });
 
+    // ajax start add page dimmer loading
+    $(document).ajaxStart(function() {
+        $('.pageDimmer').addClass('active');
+    });
+    // ajax complete remove page dimmer loading
+    $(document).ajaxComplete(function(event, xhr, settings) {
+        $('.pageDimmer').removeClass('active');
+    });
+
+
 });

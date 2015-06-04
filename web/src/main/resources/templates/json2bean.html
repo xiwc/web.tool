@@ -53,6 +53,7 @@
                     </form>
                     <div class="ui segment">
                         <div class="ui button" id="btnReplace">Convert</div>
+                        <div class="ui button" id="btnJsonFormat">Format Json</div>
                     </div>
                     <form class="ui form">
                         <div class="field">
@@ -68,8 +69,13 @@
             </div>
         </div>
     </div>
+    <div th:replace="index :: dimmer"></div>
     <script>
     jQuery(document).ready(function($) {
+
+        $('#btnJsonFormat').click(function(event) {
+            $('#txtInput').text(JSON.stringify($.parseJSON($('#txtInput').text()), null, 4));
+        });
 
         $('#btnReplace').click(function(event) {
             $.post('json2bean/convert', {

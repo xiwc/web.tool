@@ -17,6 +17,7 @@
     <script th:src="@{/lib/semantic/semantic.js}" src="../static/lib/semantic/semantic.js"></script>
     <script th:src="@{/lib/jquery.notification.js}" src="../static/lib/jquery.notification.js"></script>
     <script th:src="@{/lib/showdown.min.js}" src="../static/lib/showdown.min.js"></script>
+    <script th:src="@{/lib/zeroclipboard/ZeroClipboard.min.js}" src="../static/lib/zeroclipboard/ZeroClipboard.min.js"></script>
     <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
 </head>
 
@@ -51,6 +52,8 @@
                     </form>
                     <div class="ui segment">
                         <div class="ui button" id="btnReplace">Replace</div>
+                        <div class="ui button" id="btnCopyOutput" data-clipboard-target="txtOutput">Copy Output</div>
+                        <div class="ui button" id="btnCopyProp" data-clipboard-target="txtProperty">Copy Property</div>
                     </div>
                     <form class="ui form">
                         <div class="field">
@@ -66,8 +69,22 @@
             </div>
         </div>
     </div>
+    <div th:replace="index :: dimmer"></div>
     <script>
     jQuery(document).ready(function($) {
+
+        var client = new ZeroClipboard($('#btnCopyOutput,#btnCopyProp'));
+        client.on('ready', function(event) {
+            client.on('aftercopy', function(event) {
+                console.log('Copied text to clipboard: ' + event.data['text/plain']);
+                $.ntf.info('复制到剪贴板成功!');
+            });
+        });
+
+        client.on('error', function(event) {
+            $.ntf.error('复制到剪贴板失败!');
+            ZeroClipboard.destroy();
+        });
 
         $('#btnReplace').click(function(event) {
             $.post('i18n/replace', {
