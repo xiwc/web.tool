@@ -15,12 +15,18 @@ jQuery(document).ready(function($) {
     $('.markdown-file').each(function(index, el) {
         $.get($(el).attr('href'), function(data) {
             $(el).replaceWith($('<div class="markdown-body"></div>').html(converter.makeHtml(data)));
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
         });
     });
 
     // convert inner markdown text to html and replace it.
     $('.markdown-text').each(function(index, el) {
         $(el).replaceWith($('<div class="markdown-body"></div>').html(converter.makeHtml($(el).find('pre').text())));
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
     });
 
     // ajax start add page dimmer loading
